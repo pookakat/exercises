@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+    <h1 class="text-center"> Rock, Paper, Scissors</h1>
+    <h2 class="text-center">The Mother of all Games</h2>
+    <div id="status" class="p-3 mb-2 bg-primary text-center text-white"></div>
+    <p>Wins:<div id="wins"></div></p>
+    <p>Losses:<div id="losses"></div></p>
+    <p>Ties:<div id="ties"></div></p>
+
+    <script>
+        var x;
+        var computerChoice = ['r', 'p', 's'];
+        var t = 0;
+        var w = 0;
+        var l = 0;
+        document.addEventListener("keydown", function (e) {
+            document.getElementById("losses").innerHTML = l;
+            document.getElementById("wins").innerHTML = w;
+            document.getElementById("ties").innerHTML = t;
+            if (t == 5 || w == 5 || l == 5) {
+                if (w == 5) {
+                    document.write('You win!');
+                }
+                else if (l == 5) {
+                    document.write('You big loser!');
+                }
+                else if (t == 5) {
+                    document.write('I am bored. How about a nice game of thermonuclear warfare?');
+                }
+            }
+            else {
+                alert('Rock, Paper, Scissors! Shoot!');
+                var choice = e.key;
+                x = Math.floor(Math.random() * 3);
+                var cchoice = computerChoice[x];
+                if (choice == 'r') {
+                    if (cchoice == 'p') {
+                        document.getElementById("status").innerHTML=('Paper covers rock! You lose!');
+                        l++;
+                    }
+                    else if (cchoice == 'r') {
+                        document.getElementById("status").innerHTML=('Tie');
+                        t++;
+                    }
+                    else {
+                        document.getElementById("status").innerHTML=('Rock breaks scissors! You win!');
+                        w++;
+                    }
+                }
+                else if (choice == 's') {
+                    if (cchoice == 'p') {
+                        document.getElementById("status").innerHTML=('Scissors cut paper! You win!');
+                        w++;
+                    }
+                    else if (cchoice == 'r') {
+                        document.getElementById("status").innerHTML=('Rock breaks scissors! You lose!');
+                        l++;
+                    }
+                    else {
+                        document.getElementById("status").innerHTML=('Tie!');
+                        t++;
+                    }
+                }
+                else if (choice == 'p') {
+                    if (cchoice == 'p') {
+                        document.getElementById("status").innerHTML=('Tie!');
+                        t++;
+                    }
+                    else if (cchoice == 'r') {
+                        document.getElementById("status").innerHTML=('Paper covers rock! You win!');
+                        w++;
+                    }
+                    else {
+                        document.getElementById("status").innerHTML=('Scissors cut paper! You lose!');
+                        w++;
+                    }
+                }
+                else {
+                    alert('You can only pick r for rock, p for paper or s for scissors');
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
